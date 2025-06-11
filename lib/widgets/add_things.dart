@@ -23,7 +23,7 @@ class _AddThingsState extends State<AddThings> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Add Todo',
+              'Add Taks To Do Today',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30,
@@ -43,7 +43,7 @@ class _AddThingsState extends State<AddThings> {
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 10),
                   hint: Text(
-                    'Add Todo',
+                    'Add Tasks',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 72, 71, 71),
                     ),
@@ -58,6 +58,7 @@ class _AddThingsState extends State<AddThings> {
                 backgroundColor: Colors.lightBlueAccent,
                 foregroundColor: Colors.white,
                 textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                minimumSize: Size(double.infinity, 60),
               ),
               onPressed: () {
                 final newTask = taskString.text;
