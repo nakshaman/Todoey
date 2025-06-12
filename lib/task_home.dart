@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:todoye/utils/data.dart';
 import 'package:todoye/widgets/bottom_row.dart';
 import 'package:todoye/widgets/product_list.dart';
+import 'dart:async';
 
 class TaskHome extends StatefulWidget {
   const TaskHome({super.key});
@@ -12,6 +13,27 @@ class TaskHome extends StatefulWidget {
 }
 
 class _TaskHomeState extends State<TaskHome> {
+  // var dateTimeNow = DateTime.now();
+  late DateTime dateTimeNow;
+  late Timer _timer;
+  @override
+  void initState() {
+    super.initState();
+    dateTimeNow = DateTime.now();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        dateTimeNow = DateTime.now();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,19 +46,58 @@ class _TaskHomeState extends State<TaskHome> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    debugPrint('Gesture Detector menu tapped');
-                  },
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.list,
-                      color: Colors.lightBlueAccent,
-                      size: 40,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //
+                    GestureDetector(
+                      onTap: () {
+                        Provider.of<Data>(context, listen: false).clearAll();
+                        debugPrint('Deleted All the Tasks At Once');
+                      },
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.list,
+                          color: Colors.lightBlueAccent,
+                          size: 40,
+                        ),
+                      ),
                     ),
-                  ),
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.white, width: 0.5),
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            '${dateTimeNow.day.toString().padLeft(2, '0')} : ${dateTimeNow.month.toString().padLeft(2, '0')} : ${dateTimeNow.year.toString().padLeft(2, '0')}',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${dateTimeNow.hour.toString().padLeft(2, '0')} : ${dateTimeNow.minute.toString().padLeft(2, '0')} : ${dateTimeNow.second.toString().padLeft(2, '0')}',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10),
                 Text(

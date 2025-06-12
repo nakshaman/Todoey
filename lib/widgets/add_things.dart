@@ -74,14 +74,17 @@ class _AddThingsState extends State<AddThings> {
                   onPressed: () {
                     setState(() {
                       taskView = !taskView;
-                      if (taskView == false) {
-                        taskViewIcon = Icon(Icons.visibility_off);
-                      } else {
-                        taskViewIcon = Icon(Icons.remove_red_eye_outlined);
-                      }
+                      // if (taskView == false) {
+                      //   taskViewIcon = Icon(Icons.visibility_off);
+                      // } else {
+                      //   taskViewIcon = Icon(Icons.remove_red_eye_outlined);
+                      // }
                     });
                   },
-                  icon: taskViewIcon,
+                  icon: taskView
+                      ? Icon(Icons.visibility)
+                      : Icon(Icons.visibility_off),
+                  color: Colors.lightBlue,
                 ),
               ),
             ),

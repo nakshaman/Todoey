@@ -13,4 +13,8 @@ class Data extends ChangeNotifier {
     tasks[index].isDone = !tasks[index].isDone;
     notifyListeners();
   }
+
+  void clearAll() {
+    tasks.clear();
+  }
 }
