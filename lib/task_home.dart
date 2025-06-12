@@ -13,7 +13,6 @@ class TaskHome extends StatefulWidget {
 }
 
 class _TaskHomeState extends State<TaskHome> {
-  // var dateTimeNow = DateTime.now();
   late DateTime dateTimeNow;
   late Timer _timer;
   @override
@@ -49,11 +48,43 @@ class _TaskHomeState extends State<TaskHome> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    //
+                    // Button To delete every Task
                     GestureDetector(
                       onTap: () {
-                        Provider.of<Data>(context, listen: false).clearAll();
                         debugPrint('Deleted All the Tasks At Once');
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Task Deleted'),
+                              content: Text('Each and Every Task is Deleted.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Provider.of<Data>(
+                                      context,
+                                      listen: false,
+                                    ).clearAll();
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    'Ok',
+                                    style: TextStyle(color: Colors.lightBlue),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    'Cancel',
+                                    style: TextStyle(color: Colors.lightBlue),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       },
                       child: CircleAvatar(
                         radius: 40,
