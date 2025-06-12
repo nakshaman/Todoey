@@ -11,6 +11,8 @@ class AddThings extends StatefulWidget {
 
 class _AddThingsState extends State<AddThings> {
   TextEditingController taskString = TextEditingController();
+  bool taskView = false;
+  Icon taskViewIcon = Icon(Icons.visibility_off);
 
   @override
   Widget build(BuildContext context) {
@@ -26,24 +28,25 @@ class _AddThingsState extends State<AddThings> {
               'Add Taks To Do Today',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 25,
                 fontWeight: FontWeight.w600,
                 color: Colors.lightBlueAccent,
               ),
             ),
             TextField(
-              autofocus: false,
+              autofocus: true,
+              obscureText: taskView,
               controller: taskString,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Color.fromARGB(255, 210, 229, 238),
                 contentPadding: EdgeInsets.only(left: 10),
                 hint: Text(
-                  'Add Tasks',
+                  'Add Task',
                   style: TextStyle(
                     color: const Color.fromARGB(255, 72, 71, 71),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -65,6 +68,20 @@ class _AddThingsState extends State<AddThings> {
                     color: Colors.lightBlueAccent,
                     width: 0.5,
                   ),
+                ),
+                prefixIcon: Icon(Icons.task, color: Colors.lightBlue),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      taskView = !taskView;
+                      if (taskView == false) {
+                        taskViewIcon = Icon(Icons.visibility_off);
+                      } else {
+                        taskViewIcon = Icon(Icons.remove_red_eye_outlined);
+                      }
+                    });
+                  },
+                  icon: taskViewIcon,
                 ),
               ),
             ),

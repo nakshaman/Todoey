@@ -75,6 +75,7 @@ class _TaskHomeState extends State<TaskHome> {
           ),
         ],
       ),
+      // For adding new tasks in the product list
       bottomNavigationBar: BottomRow(),
     );
   }
