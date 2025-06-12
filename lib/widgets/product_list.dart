@@ -15,21 +15,28 @@ class _ProductListState extends State<ProductList> {
   Widget build(BuildContext context) {
     final data = Provider.of<Data>(context);
     return ListView.builder(
+      padding: EdgeInsets.only(bottom: 100),
       itemCount: data.tasks.length,
       itemBuilder: (context, index) {
         final task = data.tasks[index];
-        return ListTile(
-          title: Text(
-            task.name,
-            style: TextStyle(
-              decoration: task.isDone ? TextDecoration.lineThrough : null,
+        return Card(
+          shadowColor: Color(0xFFE3F2FD),
+          color: Color(0xFFE3F2FD),
+          margin: EdgeInsets.all(10),
+          elevation: 5,
+          child: ListTile(
+            title: Text(
+              task.name,
+              style: TextStyle(
+                decoration: task.isDone ? TextDecoration.lineThrough : null,
+              ),
             ),
-          ),
-          trailing: Checkbox(
-            value: task.isDone,
-            onChanged: (newValue) {
-              data.toggle(index);
-            },
+            trailing: Checkbox(
+              value: task.isDone,
+              onChanged: (newValue) {
+                data.toggle(index);
+              },
+            ),
           ),
         );
       },

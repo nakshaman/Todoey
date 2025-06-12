@@ -17,7 +17,7 @@ class _AddThingsState extends State<AddThings> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: SizedBox(
-        height: 340,
+        height: 280,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
