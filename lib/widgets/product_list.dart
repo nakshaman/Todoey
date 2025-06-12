@@ -15,7 +15,7 @@ class _ProductListState extends State<ProductList> {
   Widget build(BuildContext context) {
     final data = Provider.of<Data>(context);
     return ListView.builder(
-      padding: EdgeInsets.only(bottom: 100),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.03),
       itemCount: data.tasks.length,
       itemBuilder: (context, index) {
         final task = data.tasks[index];

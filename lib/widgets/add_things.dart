@@ -31,25 +31,40 @@ class _AddThingsState extends State<AddThings> {
                 color: Colors.lightBlueAccent,
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 210, 229, 238),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.lightBlueAccent, width: 0.5),
-              ),
-              child: TextField(
-                autofocus: true,
-                controller: taskString,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 10),
-                  hint: Text(
-                    'Add Tasks',
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 72, 71, 71),
-                    ),
-                    textAlign: TextAlign.center,
+            TextField(
+              autofocus: false,
+              controller: taskString,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Color.fromARGB(255, 210, 229, 238),
+                contentPadding: EdgeInsets.only(left: 10),
+                hint: Text(
+                  'Add Tasks',
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 72, 71, 71),
                   ),
-                  border: InputBorder.none,
+                  textAlign: TextAlign.center,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(
+                    color: Colors.lightBlueAccent,
+                    width: 0.5,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(
+                    color: Colors.lightBlueAccent,
+                    width: 1.5,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(
+                    color: Colors.lightBlueAccent,
+                    width: 0.5,
+                  ),
                 ),
               ),
             ),

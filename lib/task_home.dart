@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoye/utils/data.dart';
-import 'package:todoye/widgets/add_things.dart';
+import 'package:todoye/widgets/bottom_row.dart';
 import 'package:todoye/widgets/product_list.dart';
 
 class TaskHome extends StatefulWidget {
@@ -15,16 +15,6 @@ class _TaskHomeState extends State<TaskHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.lightBlueAccent,
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (BuildContext context) => AddThings(),
-          );
-        },
-        child: Icon(Icons.add, color: Colors.white),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -85,6 +75,7 @@ class _TaskHomeState extends State<TaskHome> {
           ),
         ],
       ),
+      bottomNavigationBar: BottomRow(),
     );
   }
 }
