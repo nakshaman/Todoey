@@ -35,6 +35,9 @@ class _ProductListState extends State<ProductList> {
               value: task.isDone,
               onChanged: (newValue) {
                 data.toggle(index);
+                Future.delayed(Duration(milliseconds: 300), () {
+                  data.deleteTask(index);
+                });
               },
             ),
           ),

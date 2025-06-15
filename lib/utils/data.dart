@@ -17,4 +17,9 @@ class Data extends ChangeNotifier {
   void clearAll() {
     tasks.clear();
   }
+
+  void deleteTask(int index) {
+    tasks.removeAt(index);
+    notifyListeners();
+  }
 }
